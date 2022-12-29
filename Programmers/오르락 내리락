@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+using namespace std;
+
+int Answer;
+
+int main(int argc, char** argv)
+{
+	int T, test_case;
+	int N1, N2;
+	int dp[1000001];
+    int sum[1000001];
+    dp[1] = 0;
+    dp[2] = 1;
+    dp[3] = 3;
+    dp[4] = 2;
+    sum[1] = 0;
+    
+    for (int i=4;i<1000001;i++) {
+        if (i % 2 == 1)
+            dp[i] = dp[(i+1)/2] + 2;
+        else
+            dp[i] = dp[i/2] + 1;
+    }
+    
+    for (int i=2;i<1000001;i++)
+        sum[i] = dp[i] + sum[i-1];
+
+	cin >> T;
+	for(test_case = 0; test_case  < T; test_case++)
+	{
+	    cin >> N1 >> N2;
+
+		cout << "Case #" << test_case+1 << "\n";
+	    cout << sum[N2] - sum[N1-1] << "\n";
+	}
+
+	return 0;
+}
