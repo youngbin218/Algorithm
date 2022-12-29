@@ -1,0 +1,40 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int sel(vector<double> fail) {
+    double tmp = -1;
+    int index;
+    for (int i=1;i<fail.size()-1;i++) {
+        if (tmp < fail[i]) {
+            tmp = fail[i];
+            index = i;
+        }
+    }
+    return index;
+}
+
+vector<int> solution(int N, vector<int> stages) {
+    vector<int> answer;
+    vector<double> fail(N+2, 0);
+    for (int i=0;i<stages.size();i++)
+        fail[stages[i]] += 1;
+    
+    double cnt = stages.size();
+    int tmp;
+    for (int i=1;i<N+1;i++) {
+        if (cnt == 0)
+            continue;
+        tmp = fail[i];
+        fail[i] /= cnt;
+        cnt -= tmp;
+    }
+    
+    for (int i=0;i<N;i++) {
+        tmp = sel(fail);
+        fail[tmp] = -2;
+        answer.push_back(tmp);
+    }
+    return answer;
+}

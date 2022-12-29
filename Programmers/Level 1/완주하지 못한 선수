@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+string solution(vector<string> participant, vector<string> completion) {
+    string answer = "";
+    int i = 0;
+    
+    sort(participant.begin(), participant.end());
+    sort(completion.begin(), completion.end());
+    
+    while (true) {
+        if (participant[i] == completion[i])
+            i++;
+        else
+            break;
+    }
+
+    answer = participant[i];
+    return answer;
+}

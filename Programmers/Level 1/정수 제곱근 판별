@@ -1,0 +1,12 @@
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+long long solution(long long n) {
+    double answer = sqrt((double)n);
+    if (answer - int(answer) == 0)
+        return pow(answer+1, 2);
+    else
+        return -1;
+}

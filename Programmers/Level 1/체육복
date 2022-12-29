@@ -1,0 +1,35 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int n, vector<int> lost, vector<int> reserve) {
+    int answer = 0;
+    int cnt = 0;
+    for (int i=0;i<lost.size();i++) {
+        for (int j=0;j<reserve.size();j++) {
+            if (lost[i] == reserve[j]) {
+                lost[i] = -1;
+                reserve[j] = -1;
+                cnt++;
+                break;
+            }   
+        }
+    }
+    
+    answer = n - lost.size() + cnt;
+    for (int i=0;i<lost.size();i++) {
+        if (lost[i] == -1)
+            continue;
+        for (int j=0;j<reserve.size();j++) {
+            if (reserve[j] == -1)
+                continue;
+            if (reserve[j] - 1 == lost[i] || reserve[j] + 1 == lost[i]) {
+                answer++;
+                reserve[j] = -1;
+                break;
+            }
+        }
+    }
+    return answer;
+}

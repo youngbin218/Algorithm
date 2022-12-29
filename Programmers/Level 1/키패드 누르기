@@ -1,0 +1,105 @@
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+string solution(vector<int> numbers, string hand) {
+    string answer = "";
+    int re1 = 0, re2 = 0;
+    int l[2] = {3, 0};
+    int r[2] = {3, 2};
+    
+    for (int i=0;i<numbers.size();i++) {
+        if (numbers[i] == 1 || numbers[i] == 4 || numbers[i] == 7) {
+            if (numbers[i] == 1)
+                l[0] = 0;
+            else if (numbers[i] == 4)
+                l[0] = 1;
+            else
+                l[0] = 2;
+            l[1] = 0;
+            answer += "L";
+        }
+        else if (numbers[i] == 3 || numbers[i] == 6 || numbers[i] == 9) {
+            if (numbers[i] == 3)
+                r[0] = 0;
+            else if (numbers[i] == 6)
+                r[0] = 1;
+            else
+                r[0] = 2;
+            r[1] = 2;
+            answer += "R";
+        }
+        else {
+            if (numbers[i] == 2) {
+                re1 = abs(l[0]-0) + abs(l[1]-1);
+                re2 = abs(r[0]-0) + abs(r[1]-1);
+            }
+            else if (numbers[i] == 5) {
+                re1 = abs(l[0]-1) + abs(l[1]-1);
+                re2 = abs(r[0]-1) + abs(r[1]-1);
+            }
+            else if (numbers[i] == 8) {
+                re1 = abs(l[0]-2) + abs(l[1]-1);
+                re2 = abs(r[0]-2) + abs(r[1]-1);
+            }
+            else {
+                re1 = abs(l[0]-3) + abs(l[1]-1);
+                re2 = abs(r[0]-3) + abs(r[1]-1);
+            }
+                
+            if (re1 < re2) {
+                if (numbers[i] == 2)
+                    l[0] = 0;
+                else if (numbers[i] == 5)
+                    l[0] = 1;
+                else if (numbers[i] == 8)
+                    l[0] = 2;
+                else
+                    l[0] = 3;
+                l[1] = 1;
+                answer += "L";
+            }
+            else if (re1 > re2) {
+                if (numbers[i] == 2)
+                    r[0] = 0;
+                else if (numbers[i] == 5)
+                    r[0] = 1;
+                else if (numbers[i] == 8)
+                    r[0] = 2;
+                else
+                    r[0] = 3;
+                r[1] = 1;
+                answer += "R";
+            }
+            else {
+                if (!hand.compare("left")) {
+                    if (numbers[i] == 2)
+                        l[0] = 0;
+                    else if (numbers[i] == 5)
+                        l[0] = 1;
+                    else if (numbers[i] == 8)
+                        l[0] = 2;
+                    else
+                        l[0] = 3;
+                    l[1] = 1;
+                    answer += "L";
+                }
+                else {
+                    if (numbers[i] == 2)
+                        r[0] = 0;
+                    else if (numbers[i] == 5)
+                        r[0] = 1;
+                    else if (numbers[i] == 8)
+                        r[0] = 2;
+                    else
+                        r[0] = 3;
+                    r[1] = 1;
+                     answer += "R";
+                } 
+            }
+        }
+    }
+    return answer;
+}
