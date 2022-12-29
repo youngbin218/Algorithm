@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+#include <map>
+#include <set>
+
+using namespace std;
+
+int solution(vector<vector<string>> clothes) {
+    int answer = 1;
+    map<string, int> m;
+    set<string> s;
+    for (int i=0;i<clothes.size();i++) {
+        if (m[clothes[i][1]] >= 1)
+            m[clothes[i][1]]++;
+        else
+            m[clothes[i][1]] = 1;
+        s.insert(clothes[i][1]);
+    }
+    for (set<string>::iterator iter=s.begin();iter!=s.end();iter++)
+        answer *= (m[*iter]+1);
+    answer--;
+    return answer;
+}

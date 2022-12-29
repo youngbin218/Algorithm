@@ -1,0 +1,27 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> citations) {
+    int answer = 0, cnt = 0;
+    sort(citations.begin(), citations.end());
+    while (true) {
+        if (answer > citations[cnt]) {
+            if (cnt != citations.size()-1) {
+                cnt++;
+                continue;
+            }
+            else {
+                answer--;
+                break;
+            }
+        }
+        else if (answer > citations.size() - cnt) {
+            answer--;
+            break;
+        }
+        answer++;
+    }
+    return answer;
+}

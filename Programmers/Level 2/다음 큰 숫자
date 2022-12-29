@@ -1,0 +1,27 @@
+#include <vector>
+
+using namespace std;
+
+int bi(int n) {
+    int cnt = 0;
+    while (n != 1) {
+        if (n % 2 == 1)
+            cnt++;
+        n /= 2;
+    }
+    cnt++;
+    return cnt;
+}
+
+int solution(int n) {
+    int answer = 0;
+    int cnt = bi(n);
+    
+    while (answer == 0) {
+        n++;
+        int cnt2 = bi(n);
+        if (cnt == cnt2)
+            answer = n;
+    }
+    return answer;
+}

@@ -1,0 +1,38 @@
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> prices) {
+    vector<int> answer(prices.size(), 0);
+    vector<int> value;
+    queue<pair<int,int>> q;
+    int tmp = 0;
+    for (int i=0;i<prices.size();i++)
+        value.push_back(prices[i]);
+    
+    for (int i=0;i<prices.size();i++) {
+        int cnt = 0;
+        q.push(make_pair(i, 0));
+
+        tmp = q.size();
+        while (cnt != tmp-1) {
+            int fir = q.front().first;
+            int sec = q.front().second;
+            sec++;
+            q.pop();
+            if (value[fir] > prices[i])
+                answer[fir] = sec;
+            else
+                q.push(make_pair(fir, sec));
+            cnt++;
+        }
+    }
+    
+    tmp = q.size();
+    for (int i=0;i<tmp;i++) {
+        answer[q.front().first] = q.front().second;
+        q.pop();
+    }
+    return answer;
+}

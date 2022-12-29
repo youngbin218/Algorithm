@@ -1,0 +1,37 @@
+#include <string>
+#include <vector>
+#include <sstream>
+#include <map>
+
+using namespace std;
+
+vector<string> solution(vector<string> record) {
+    vector<string> answer, v;
+    map<string,string> m;
+    
+    for (int i=0;i<record.size();i++) {
+        vector<string> str;
+        string cut;
+        stringstream ss(record[i]);
+        
+        while (getline(ss, cut, ' '))
+            str.push_back(cut);
+        
+        if (!str[0].compare("Enter")) {
+            v.push_back(str[1]);
+            answer.push_back("님이 들어왔습니다.");
+            m[str[1]] = str[2];
+        }
+        else if (!str[0].compare("Leave")) {
+            v.push_back(str[1]);
+            answer.push_back("님이 나갔습니다.");
+        }
+        else {
+            m[str[1]] = str[2];
+        }
+    }
+    
+    for (int i=0;i<answer.size();i++)
+        answer[i] = m[v[i]] + answer[i];
+    return answer;
+}

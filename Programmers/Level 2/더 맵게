@@ -1,0 +1,28 @@
+#include <set>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> scoville, int K) {
+    int answer = 0;
+    multiset<int> ms;
+    multiset<int>::iterator iter;
+    for (int i=0;i<scoville.size();i++)
+        ms.insert(scoville[i]);
+    
+    while (true) {
+        int mix = 0;
+        iter = ms.begin();
+        if (*iter >= K)
+            return answer;
+        if (ms.size() == 1 && *iter < K)
+            return -1;
+        
+        mix = *iter + (*++iter) * 2;
+        for (int i=0;i<2;i++)
+            ms.erase(ms.begin());
+        ms.insert(mix);
+        answer++;
+    }
+    return 0;
+}

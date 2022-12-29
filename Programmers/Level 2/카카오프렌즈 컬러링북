@@ -1,0 +1,46 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int visit[100][100];
+
+int bfs(int m, int n, vector<vector<int>> picture, int a, int b, int num) {
+    if (a < 0 || b < 0 || a == m || b == n || visit[a][b] == -1 || num != picture[a][b])
+        return 0;
+    
+    visit[a][b] = -1;
+    int u = bfs(m, n, picture, a-1, b, num);
+    int d = bfs(m, n, picture, a+1, b, num);
+    int l = bfs(m, n, picture, a, b-1, num);
+    int r = bfs(m, n, picture, a, b+1, num);
+    
+    return u+d+l+r+1;
+}
+
+vector<int> solution(int m, int n, vector<vector<int>> picture) {
+    int number_of_area = 0;
+    int max_size_of_one_area = 0;
+    
+    for (int i=0;i<100;i++) {
+        for (int j=0;j<100;j++)
+            visit[i][j] = 0;
+    }
+    
+    for (int i=0;i<m;i++) {
+        for (int j=0;j<n;j++) {
+            if (picture[i][j] == 0 || visit[i][j] == -1)
+                continue;
+            else {
+                int tmp = bfs(m, n, picture, i, j, picture[i][j]);
+                number_of_area++;
+                max_size_of_one_area = max(tmp, max_size_of_one_area);
+            }
+        }
+    }
+    
+    vector<int> answer(2);
+    answer[0] = number_of_area;
+    answer[1] = max_size_of_one_area;
+    return answer;
+}

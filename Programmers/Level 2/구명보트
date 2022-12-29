@@ -1,0 +1,30 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> people, int limit) {
+    int answer = 0;
+    int i = 0, j = people.size()-1, cnt = people.size();
+    sort(people.begin(), people.end(), greater<>());
+    while (i <= j) {
+        if (i == j) {
+            answer++;
+            break;
+        }
+        else {
+            if (people[i] <= limit / 2) {
+                answer += (j-i+2) / 2;
+                break;
+            }
+            else if (people[i] + people[j] <= limit) {
+                i++;
+                j--;
+            }   
+            else
+                i++;
+        }
+        answer++;
+    }
+    return answer;
+}

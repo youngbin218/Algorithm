@@ -1,0 +1,17 @@
+#include <string>
+
+using namespace std;
+
+string solution(int n) {
+    string answer = "";
+    int num[3] = {4, 1, 2};
+    int tmp = n;
+    while (tmp != 0) {
+        answer.insert(0, to_string(num[tmp%3]));
+        if (tmp % 3 == 0)
+            tmp = tmp / 3 - 1;
+        else
+            tmp /= 3;
+    }
+    return answer;
+}
