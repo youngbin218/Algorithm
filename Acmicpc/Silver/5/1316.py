@@ -2,7 +2,6 @@ n = int(input())
 words = []
 cnt = 0
 
-
 def group_word(word):
     bag_word = {}
     prev_w = ''
@@ -14,7 +13,6 @@ def group_word(word):
                 return 0
         prev_w = w
     return 1
-
 
 for i in range(n):
     word = list(input())
