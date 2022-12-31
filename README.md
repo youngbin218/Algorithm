@@ -17,7 +17,7 @@
 - int(input())
 
 
-  - 문자열을 입력 받아 int 형으로 변환   
+  - 문자열을 입력 받아 int 형으로 변환
 2. 여러 데이터 입력 방법
  - input().split()
 
@@ -31,13 +31,13 @@
    - ex) a, b = map(int, input().split())  
      입력된 데이터의 개수가 많지 않을 때 사용
    - ex) data = list(map(int, input().split())  
-     입력된 데이터를 리스트에 저장할 때 사용   
+     입력된 데이터를 리스트에 저장할 때 사용
 3. 빠르게 입력 받기
  - sys.stdin.readline().rstrip()
 
 
-  - sys 라이브러리에 있는 sys.stdin.readline() 사용
-  - 입력 후 Enter는 개행 문자로 입력되므로 rstrip() 함께 사용   
+   - sys 라이브러리에 있는 sys.stdin.readline() 사용
+   - 입력 후 Enter는 개행 문자로 입력되므로 rstrip() 함께 사용
 
 #### 출력
 1. 출력 시 줄 바꿈 하지 않기
