@@ -1,3 +1,4 @@
+# 1.
 n = int(input())
 nums = {}
 
@@ -8,7 +9,14 @@ while n != 0:
     else:
         nums[val] = 1
     n = n // 10
+    
+# 2.
+# n = list(map(int, input()))
 
+# 3.
+# n = input()
+# nums = [int(i) for i in n]
+    
 if 6 in nums and 9 in nums:
     a = nums[6]
     b = nums[9]
@@ -21,6 +29,4 @@ elif 6 in nums and 9 not in nums:
 elif 6 not in nums and 9 in nums:
     nums[9] = (nums[9]+1) // 2
 
-nums = dict(sorted(nums.items(), reverse=True, key=lambda x: x[1]))
-
-print(list(nums.values())[0])
+print(max(nums.values()))
