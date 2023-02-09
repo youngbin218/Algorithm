@@ -19,6 +19,6 @@
 
 ##### [7785번](https://www.acmicpc.net/problem/7785)
 > ##### 문제 조건 : 시간 제한 (1초) / 메모리 제한 (256MB) / 입력 되는 n의 범위 (2 ≤ n ≤ 10^6)
->> ##### Error : 시간 초과
->> ##### -> List 사용 시 Delete, Remove의 시간 복잡도가 O(N)이므로 시간 초과 발생
->> ##### -> Delete의 시간 복잡도가 O(1)인 Dictionary 사용
+> ##### Error : 시간 초과
+> ##### -> List 사용 시 Delete, Remove의 시간 복잡도가 O(N)이므로 시간 초과 발생
+> ##### -> Delete의 시간 복잡도가 O(1)인 Dictionary 사용
