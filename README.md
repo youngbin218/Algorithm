@@ -22,3 +22,13 @@
 > ##### Error : 시간 초과
 > ##### -> List 사용 시 Delete, Remove의 시간 복잡도가 O(N)
 > ##### -> Delete의 시간 복잡도가 O(1)인 Dictionary 사용
+
+#### 아스키 코드 변환
+
+#### Int -> ASCII
+> ##### chr(int) : int에 해당하는 ASCII 문자로 변환
+
+#### ASCII -> Int
+> ##### ord(str) : str에 해당하는 숫자로 변환
+
+##### [10809번](https://www.acmicpc.net/problem/10809)
