@@ -24,11 +24,3 @@
 |Operation|Example|Big-O|Description|
 |---|---|---|---|
 |Containment|x in/not in s|O(1)|x의 포함 여부 확인|
-
-#### 아스키 코드 변환
-
-#### Int -> ASCII
-> ##### chr(int) : int에 해당하는 ASCII 문자로 변환
-
-#### ASCII -> Int
-> ##### ord(str) : str에 해당하는 숫자로 변환
